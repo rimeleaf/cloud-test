@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
  * @author: MECHREV
  * @date: 2020/4/6 21:04
  */
-@Configuration
+//@Configuration
 public class ProductRibbonConfig {
 
-    @Bean
+//    @Bean
     public IRule randomRule(){
         return new RandomRule();
     }

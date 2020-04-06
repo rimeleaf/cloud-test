@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
  * @author: MECHREV
  * @date: 2020/4/6 21:06
  */
-@Configuration
+//@Configuration
 public class PayRibbonConfig {
 
-    @Bean
+//    @Bean
     public IRule roundRobinRule() {
         return new RoundRobinRule();
     }

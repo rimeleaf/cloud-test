@@ -31,12 +31,13 @@ spring:
         namespace: 3aa27f85-e1e3-4652-82a8-c180dd9a02a4
         # 不同group之间的服务不能调用
         group: test
-        cluster-name:
-        #metadata:
-        #version: v1
+        cluster-name: a
+        metadata:
+         version: v1
 
   application:
     name: order-center
+
 ribbon:
   eager‐load:
     enable: true
@@ -48,12 +49,13 @@ ribbon:
   ConnectTimeout: 1000
 
 # 推荐使用该方式
-#product-center:
-#  ribbon:
-#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-#pay-center:
-#  ribbon:
-#    NFLoadBalancerRuleClassName: com.netfilx.loadbalancer.RoundRobinRule
+product-center:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+pay-center:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
 
 
 

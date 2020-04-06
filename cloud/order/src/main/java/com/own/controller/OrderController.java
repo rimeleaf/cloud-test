@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -29,12 +30,16 @@ public class OrderController {
 
     @GetMapping("getProduct")
     public String getProduct() throws Exception {
-        List<ServiceInstance> serviceInstanceList = discoveryClient.getInstances("product-center");
-        if (null == serviceInstanceList || 0 == serviceInstanceList.size()) {
-            throw new Exception("没有可用的微服务");
-        }
-        String targetUri = serviceInstanceList.get(0).getUri().toString();
-        String responseEntity = restTemplate.getForObject(targetUri + "/product/getProduct/1", String.class);
+
+        String responseEntity = restTemplate.getForObject(  "http://product-center/product/getProduct/1", String.class);
+
+        return responseEntity;
+    }
+
+    @GetMapping("payForProduct")
+    public String payForProduct() throws Exception {
+
+        String responseEntity = restTemplate.postForObject(  "http://pay-center/pay/pfp",null, String.class);
 
         return responseEntity;
     }

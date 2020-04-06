@@ -1,5 +1,5 @@
 server:
-  port: 8301
+  port: 8304
 spring:
   datasource:
     username: nacos
@@ -31,9 +31,9 @@ spring:
         namespace: 3aa27f85-e1e3-4652-82a8-c180dd9a02a4
         # 不同group之间的服务不能调用
         group: test
-        cluster-name: NJ
-        #metadata:
-        #version: v1
+        cluster-name: b
+        metadata:
+          version: v2
 
   application:
     name: pay-center

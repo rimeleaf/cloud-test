@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
  * @author: MECHREV
  * @date: 2020/4/6 21:09
  */
-@Configuration
-@RibbonClients({@RibbonClient(value = "product-center", configuration = {ProductRibbonConfig.class}),
-        @RibbonClient(value = "pay-center", configuration = {PayRibbonConfig.class})})
+//@Configuration
+//@RibbonClients({@RibbonClient(value = "product-center", configuration = {ProductRibbonConfig.class}),
+//        @RibbonClient(value = "pay-center", configuration = {PayRibbonConfig.class})})
 public class RibbonConfig {
 }
