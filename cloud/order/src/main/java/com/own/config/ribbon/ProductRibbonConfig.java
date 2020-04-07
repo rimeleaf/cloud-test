@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @className: ProductRibbonConfig
- * @Descripe： <br>
+ * @Descripe： product负载均衡策略
  * @package: com.own.config.ribbon
  * @author: MECHREV
  * @date: 2020/4/6 21:04

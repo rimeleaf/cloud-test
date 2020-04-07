@@ -18,6 +18,7 @@
 
     <modules>
         <module>order</module>
+        <module>order-feign</module>
         <module>product</module>
         <module>pay</module>
     </modules>
@@ -29,6 +30,7 @@
         <knife4j.version>2.0.2</knife4j.version>
         <ali-druid.version>1.1.21</ali-druid.version>
         <ribbon.version>2.2.2.RELEASE</ribbon.version>
+        <nacos.version>2.2.0.RELEASE</nacos.version>
     </properties>
     <dependencies>
         <dependency>
@@ -54,7 +56,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
+                <version>${nacos.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>

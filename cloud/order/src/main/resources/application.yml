@@ -28,9 +28,9 @@ spring:
       discovery:
         server-addr: 192.168.3.13:8840
         # 不同namespace之间的服务不能调用
-        namespace: 3aa27f85-e1e3-4652-82a8-c180dd9a02a4
+#        namespace: 3aa27f85-e1e3-4652-82a8-c180dd9a02a4
         # 不同group之间的服务不能调用
-        group: test
+#        group: test
         cluster-name: a
         metadata:
          version: v1
@@ -51,7 +51,8 @@ ribbon:
 # 推荐使用该方式
 product-center:
   ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    NFLoadBalancerRuleClassName: com.own.config.rule.SameVersionAndSameClusterPriorityRule
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
 pay-center:
   ribbon:
