@@ -1,4 +1,4 @@
-package com.own.rule;
+package com.own.config.rule;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.alibaba.cloud.nacos.ribbon.NacosServer;

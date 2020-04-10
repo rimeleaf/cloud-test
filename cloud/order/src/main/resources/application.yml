@@ -30,11 +30,10 @@ spring:
         # 不同namespace之间的服务不能调用
 #        namespace: 3aa27f85-e1e3-4652-82a8-c180dd9a02a4
         # 不同group之间的服务不能调用
-#        group: test
+        group: DEFAULT_GROUP
         cluster-name: a
         metadata:
          version: v1
-
   application:
     name: order-center
 
@@ -59,4 +58,6 @@ pay-center:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
 
 
+test:
+  name: test-xxxxxx
 
