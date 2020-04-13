@@ -6,11 +6,13 @@ spring:
           uri: lb://order-center
           predicates:
             - Path=/order-feign-sentinel/**
+          filters:
+            - AddRequestParameter=owner, gjx
         - id: product
           uri: lb://product-center
           predicates:
             - Path=/product/**
-            - OwnTimeBetween=上午8:00, 下午6:20
+            - OwnTimeBetween=上午00:00, 下午12:59
 
 
 
