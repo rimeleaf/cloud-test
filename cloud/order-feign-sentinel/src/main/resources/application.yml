@@ -1,6 +1,8 @@
 server:
   port: 8112
 spring:
+  application:
+    name: order-center
   datasource:
     username: nacos
     password: Nacos@8848
@@ -36,12 +38,54 @@ spring:
           version: v1
     sentinel:
       transport:
-        dashboard: 192.168.3.13:8080
+        dashboard: 192.168.3.13:9998
+      eager: true
+      datasource:
+        flow:
+          nacos:
+            server-addr: 192.168.3.13:8840
+            dataId: ${spring.application.name}-flow-rules
+            groupId: SENTINEL_GROUP
+            ruleType: FLOW
+        degrade:
+          nacos:
+            server-addr: 192.168.3.13:8840
+            dataId: ${spring.application.name}-degrade-rules
+            groupId: SENTINEL_GROUP
+            rule-type: DEGRADE
+        system:
+          nacos:
+            server-addr: 192.168.3.13:8840
+            dataId: ${spring.application.name}-system-rules
+            groupId: SENTINEL_GROUP
+            rule-type: system
+        authority:
+          nacos:
+            server-addr: 192.168.3.13:8840
+            dataId: ${spring.application.name}-authority-rules
+            groupId: SENTINEL_GROUP
+            rule-type: authority
+        param-flow:
+          nacos:
+            server-addr: 192.168.3.13:8840
+            dataId: ${spring.application.name}-param-flow-rules
+            groupId: SENTINEL_GROUP
+            rule-type: param-flow
+#        gateway-api:
+#          nacos:
+#            server-addr: 192.168.3.13:8840
+#            dataId: ${spring.application.name}-gateway-api
+#            groupId: SENTINEL_GROUP
+#            rule-type: gw_api_group
+#        gateway-flow:
+#          nacos:
+#            server-addr: 192.168.3.13:8840
+#            dataId: ${spring.application.name}-gateway-rules
+#            groupId: SENTINEL_GROUP
+#            rule-type: gw_flow
+
   main:
     allow-bean-definition-overriding: true
-
-  application:
-    name: order-center
 
 ribbon:
   eager‐load:

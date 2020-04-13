@@ -7,6 +7,7 @@ import com.alibaba.csp.sentinel.slots.block.flow.FlowException;
 import com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowException;
 import com.alibaba.csp.sentinel.slots.system.SystemBlockException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,18 +22,24 @@ import java.io.IOException;
  * @date: 2020/4/10 10:08
  */
 @Component
+@Log4j2
 public class OwnUrlBlockHandler implements UrlBlockHandler {
     @Override
     public void blocked(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, BlockException e) throws IOException {
         if( e instanceof FlowException){
+            log.info("触发了流控");
             warrperResponse(httpServletResponse, "触发了流控");
         }else if (e instanceof ParamFlowException) {
+            log.info("触发了参数流控");
             warrperResponse(httpServletResponse, "触发了参数流控");
         }else if(e instanceof AuthorityException){
+            log.info("权限校验不通过");
             warrperResponse(httpServletResponse,"权限校验不通过");
         }else  if(e instanceof SystemBlockException){
+            log.info("触发了系统规则");
             warrperResponse(httpServletResponse,"触发了系统规则");
         }else {
+            log.info("触发了降级规则");
             warrperResponse(httpServletResponse,"触发了降级规则");
         }
     }
@@ -43,8 +50,9 @@ public class OwnUrlBlockHandler implements UrlBlockHandler {
         httpServletResponse.setHeader("Content-Type", "application/json;charset=utf-8");
         httpServletResponse.setContentType("application/json;charset=utf-8");
         ObjectMapper objectMapper = new ObjectMapper();
-       String errMsg = objectMapper.writeValueAsString(msg);
+        String errMsg = objectMapper.writeValueAsString(msg);
         httpServletResponse.getWriter().write(errMsg);
 
     }
+
 }

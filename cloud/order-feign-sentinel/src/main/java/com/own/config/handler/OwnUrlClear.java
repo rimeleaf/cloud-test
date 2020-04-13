@@ -20,7 +20,7 @@ public class OwnUrlClear implements UrlCleaner {
     public String clean(String s) {
 //        /order-feign-sentinel/getStr/1
         List<String> origins = Arrays.asList(s.split("/"));
-        StringBuffer stringBuffer = new StringBuffer("/");
+        StringBuffer stringBuffer = new StringBuffer("");
         for (String orig : origins) {
             if (NumberUtils.isDigits(orig)) {
                 stringBuffer.append("/{number}");
