@@ -6,8 +6,8 @@ spring:
     password: Nacos@8848
     url: jdbc:mysql://192.168.3.13:3306/productdb?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      type: com.alibaba.druid.pool.DruidDataSource
       initialSize: 5
       minIdle: 5
       maxActive: 20
@@ -34,6 +34,13 @@ spring:
         cluster-name: b
         metadata:
           version: v1
-
+    alibaba:
+      seata:
+        tx-service-group: own-seata
   application:
     name: product-center
+logging:
+  level:
+    com.own.service: debug
+seata:
+

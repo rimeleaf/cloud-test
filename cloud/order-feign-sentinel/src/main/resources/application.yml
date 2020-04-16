@@ -1,15 +1,15 @@
 server:
   port: 8112
 spring:
-  application:
-    name: order-center
+#  application:
+#    name: order-center
   datasource:
     username: nacos
     password: Nacos@8848
     url: jdbc:mysql://192.168.3.13:3306/orderdb?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      type: com.alibaba.druid.pool.DruidDataSource
       initialSize: 5
       minIdle: 5
       maxActive: 20

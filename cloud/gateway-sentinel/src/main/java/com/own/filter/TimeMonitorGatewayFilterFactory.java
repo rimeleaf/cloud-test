@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 /**
  * @className: TimeMonitorGatewayFilterFactory
- * @Descripe： <br>
+ * @Descripe： 自定义filter，在时间段内访问放行，其它时间段不放行
  * @package: com.own.filter
  * @author: MECHREV
  * @date: 2020/4/13 22:57

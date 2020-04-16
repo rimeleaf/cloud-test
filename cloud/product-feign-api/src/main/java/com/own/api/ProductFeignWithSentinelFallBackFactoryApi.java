@@ -1,11 +1,7 @@
 package com.own.api;
 
-import com.own.config.ProductFeignConfig;
-import com.own.sentinel.ProductFeignWithSentinelFallBackFactory;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @className: ProductFeignApi
@@ -14,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author: MECHREV
  * @date: 2020/4/7 17:18
  */
-@FeignClient(name = "product-center",  configuration = ProductFeignConfig.class, fallbackFactory = ProductFeignWithSentinelFallBackFactory.class)
+//@FeignClient(name = "product-center", configuration = ProductFeignConfig.class, fallbackFactory = ProductFeignWithSentinelFallBackFactory.class)
+@FeignClient(name = "product-center")
 @RequestMapping("/productFallbackFactory")
 public interface ProductFeignWithSentinelFallBackFactoryApi {
 
@@ -26,4 +23,10 @@ public interface ProductFeignWithSentinelFallBackFactoryApi {
      */
     @GetMapping("/getProductFallbackFactory/{id}")
     public String getProductFallbackFactory(@PathVariable int id);
+
+    @PostMapping("/inventory")
+    public boolean inventory(@RequestParam(value = "id") int id,
+                             @RequestParam(value = "num") int num) throws Exception;
+
+
 }

@@ -1,6 +1,6 @@
 package com.own.config.handler;
 
-import com.alibaba.csp.sentinel.adapter.servlet.callback.RequestOriginParser;
+import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.RequestOriginParser;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;

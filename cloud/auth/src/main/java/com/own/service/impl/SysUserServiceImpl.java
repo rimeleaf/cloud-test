@@ -1,9 +1,9 @@
 package com.own.service.impl;
 
 
-import com.tuling.config.role.entity.SysUser;
-import com.tuling.config.role.mapper.SysUserMapper;
-import com.tuling.config.role.service.ISysUserService;
+import com.own.entity.SysUser;
+import com.own.mapper.SysUserMapper;
+import com.own.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

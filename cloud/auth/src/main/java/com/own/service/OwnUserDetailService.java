@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.own.entity.SysPermission;
 import com.own.entity.SysUser;
 import com.own.mapper.SysUserMapper;
+import com.own.role.OwnUser;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -41,8 +42,8 @@ public class OwnUserDetailService implements UserDetailsService {
 
         SysUser sysUser = sysUserMapper.findByUserName(userName);
 
-        if(null == sysUser) {
-            log.warn("根据用户名:{}查询用户信息为空",userName);
+        if (null == sysUser) {
+            log.warn("根据用户名:{}查询用户信息为空", userName);
             throw new UsernameNotFoundException(userName);
         }
 
@@ -55,11 +56,11 @@ public class OwnUserDetailService implements UserDetailsService {
             }
         }
 
-//        TulingUser tulingUser = new TulingUser(sysUser.getUsername(),passwordEncoder.encode(sysUser.getPassword()),authorityList);
-//        tulingUser.setUserId(sysUser.getId());
-//        tulingUser.setNickName(sysUser.getNickname());
-//        tulingUser.setEmail(sysUser.getEmail());
-//        log.info("用户登陆成功:{}", JSON.toJSONString(tulingUser));
-        return null;
+        OwnUser ownUser = new OwnUser(sysUser.getUsername(), passwordEncoder.encode(sysUser.getPassword()), authorityList);
+        ownUser.setUserId(sysUser.getId());
+        ownUser.setNickName(sysUser.getNickname());
+        ownUser.setEmail(sysUser.getEmail());
+        log.info("用户登陆成功:{}", JSON.toJSONString(ownUser));
+        return ownUser;
     }
 }

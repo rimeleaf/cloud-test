@@ -1,6 +1,6 @@
 package com.own.config.handler;
 
-import com.alibaba.csp.sentinel.adapter.servlet.callback.UrlBlockHandler;
+import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowException;
@@ -20,12 +20,14 @@ import java.io.IOException;
  * @package: com.own.config.handler
  * @author: MECHREV
  * @date: 2020/4/10 10:08
+ *
+ *  UrlBlockHandler
  */
 @Component
 @Log4j2
-public class OwnUrlBlockHandler implements UrlBlockHandler {
+public class OwnUrlBlockHandler implements BlockExceptionHandler {
     @Override
-    public void blocked(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, BlockException e) throws IOException {
+    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, BlockException e) throws IOException {
         if( e instanceof FlowException){
             log.info("触发了流控");
             warrperResponse(httpServletResponse, "触发了流控");

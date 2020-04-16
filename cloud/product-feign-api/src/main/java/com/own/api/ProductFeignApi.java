@@ -24,4 +24,5 @@ public interface ProductFeignApi {
      */
     @GetMapping("/getProduct/{id}")
     public String getProduct(@PathVariable int id);
+
 }

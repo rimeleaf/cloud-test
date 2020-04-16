@@ -2,11 +2,11 @@ package com.own.controller;
 
 import com.own.api.ProductFeignApi;
 import com.own.api.ProductFeignWithSentinelFallBackFactoryApi;
+import com.own.entity.TOrder;
+import com.own.service.ITOrderService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @className: OrderFeignController
@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/order-feign-sentinel")
+@Log4j2
 public class OrderFeignController {
     @Autowired
 //    @Qualifier("product")
@@ -29,6 +30,9 @@ public class OrderFeignController {
     @Autowired
 //    @Qualifier("product-fallbackFactory")
     private ProductFeignWithSentinelFallBackFactoryApi productFeignWithSentinelFallBackFactoryApi;
+
+    @Autowired
+    private ITOrderService orderService;
 
     @GetMapping("getProduct")
     public String getProduct() throws Exception {
@@ -62,5 +66,20 @@ public class OrderFeignController {
         String responseEntity = productFeignWithSentinelFallBackFactoryApi.getProductFallbackFactory(1);
 
         return responseEntity;
+    }
+
+    @PostMapping("/add")
+    public boolean addOrder(@ModelAttribute TOrder tOrder) {
+        boolean result = false;
+        try {
+            result = orderService.saveOrder(tOrder);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("订单添加失败：{}", e.getMessage());
+        }
+
+        return result;
+
+
     }
 }

@@ -17,6 +17,7 @@ public class SysPermission implements Serializable {
 
     private static final long serialVersionUID = 4285835478693487481L;
 
+
     private Integer id;
 
     private Integer pid;

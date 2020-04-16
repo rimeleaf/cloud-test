@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @className: MybatisConfig
@@ -14,12 +13,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @date: 2020/4/5 17:26
  */
 @SpringBootConfiguration
-@EnableTransactionManagement
 @MapperScan({"com.own.mapper"})
 public class MybatisConfig {
-
     /**
      * 分页插件
+     *
      * @return
      */
     @Bean
@@ -32,5 +30,4 @@ public class MybatisConfig {
         return paginationInterceptor;
 
     }
-
 }

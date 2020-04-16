@@ -1,7 +1,7 @@
 package com.own.service;
 
 
-import com.tuling.config.role.entity.SysUser;
+import com.own.entity.SysUser;
 
 /**
  * Created by smlz on 2019/12/20.

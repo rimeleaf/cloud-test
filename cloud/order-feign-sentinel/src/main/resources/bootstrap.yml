@@ -13,7 +13,25 @@ spring:
           - data-id: common4.yml
             group: DEFAULT_GROUP
             refresh: true
+    alibaba:
+      seata:
+        tx-service-group: own-seata
   application:
     name: order-center
   profiles:
     active: dev
+#seata:
+#  tx-service-group: default
+#  enabled: true
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.3.13:8840
+#  registry:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.3.13:8840
+seata:
+  client:
+    rm:
+      report-success-enable: true

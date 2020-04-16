@@ -1,6 +1,6 @@
 package com.own.config.handler;
 
-import com.alibaba.csp.sentinel.adapter.servlet.callback.UrlCleaner;
+import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.UrlCleaner;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Component;
 
