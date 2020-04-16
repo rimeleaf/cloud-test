@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.3.13:8840
+    sentinel:
+      transport:
+        dashboard: 192.168.3.13:8080
+        #namespace: bc7613d2-2e22-4292-a748-48b78170f14c  #指定namespace的id
+  application:
+    name: order-center
+
+
+server:
+  port: 8401
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
