@@ -6,7 +6,7 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 
 /**
  * @className: OwnTokenEnhancer
- * @Descripe： <br>
+ * @Descripe： token增强器
  * @package: com.own.indb
  * @author: MECHREV
  * @date: 2020/4/8 20:15

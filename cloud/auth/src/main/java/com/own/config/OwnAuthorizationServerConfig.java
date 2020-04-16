@@ -49,7 +49,8 @@ public class OwnAuthorizationServerConfig extends AuthorizationServerConfigurerA
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         //第三方客户端校验token需要带入 clientId 和clientSecret来校验
         security.checkTokenAccess("isAuthenticated()")
-                .tokenKeyAccess("isAuthenticated()");//来获取我们的tokenKey需要带入clientId,clientSecretsecurity.allowFormAuthenticationForClients();
+                //来获取我们的tokenKey需要带入clientId,clientSecretsecurity.allowFormAuthenticationForClients();
+                .tokenKeyAccess("isAuthenticated()");
     }
 
     @Override
@@ -61,7 +62,7 @@ public class OwnAuthorizationServerConfig extends AuthorizationServerConfigurerA
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
 
-        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tulingTokenEnhancer(), jwtAccessTokenConverter()));
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(ownTokenEnhancer(), jwtAccessTokenConverter()));
 
         endpoints.tokenStore(tokenStore()) //授权服务器颁发的token 怎么存储的
                 .tokenEnhancer(tokenEnhancerChain)
@@ -103,7 +104,7 @@ public class OwnAuthorizationServerConfig extends AuthorizationServerConfigurerA
     }
 
     @Bean
-    public OwnTokenEnhancer tulingTokenEnhancer() {
+    public OwnTokenEnhancer ownTokenEnhancer() {
         return new OwnTokenEnhancer();
     }
 
